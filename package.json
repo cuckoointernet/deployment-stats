@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "build/index.js",
   "type": "build/index.d.ts",
+  "bin": {
+    "deployment-stats": "./build/index.js"
+  },
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
