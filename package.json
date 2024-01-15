@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,13 @@
   "homepage": "https://github.com/cuckoointernet/logger-nodejs#readme",
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-ava": "^14.0.0",
+    "eslint-plugin-unicorn": "^50.0.1",
     "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
