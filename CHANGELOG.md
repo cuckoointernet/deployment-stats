@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/cuckoointernet/deployment-stats/compare/v1.0.0...v1.0.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* **cli:** Add missing exec line ([#10](https://github.com/cuckoointernet/deployment-stats/issues/10)) ([ab58fbd](https://github.com/cuckoointernet/deployment-stats/commit/ab58fbd6d77b15fe1a9eb4bce33bc8d741349e6b))
+
 ## 1.0.0 (2024-01-15)
 
 
