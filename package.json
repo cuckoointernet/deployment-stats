@@ -9,6 +9,9 @@
     "build": "tsc",
     "lint": "eslint ."
   },
+  "files": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cuckoointernet/deployment-stats.git"
