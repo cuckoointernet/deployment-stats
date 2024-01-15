@@ -3,5 +3,6 @@
     ".": {
       "package-name": "deployment-stats"
     }
-  }
+  },
+  ".": "1.0.0"
 }
