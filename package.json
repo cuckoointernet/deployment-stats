@@ -1,0 +1,29 @@
+{
+  "name": "@cuckoointernet/deployment-stats",
+  "version": "0.0.0",
+  "main": "build/index.js",
+  "type": "build/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuckoointernet/deployment-stats.git"
+  },
+  "author": "Cuckoo Internet",
+  "bugs": {
+    "url": "https://github.com/cuckoointernet/logger-nodejs/issues"
+  },
+  "homepage": "https://github.com/cuckoointernet/logger-nodejs#readme",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.3",
+    "husky": "^8.0.3",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.490.0",
+    "commander": "^11.1.0"
+  }
+}
