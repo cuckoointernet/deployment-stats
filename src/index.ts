@@ -17,6 +17,7 @@ program
   .argument("<project>")
   .option("-s, --status <status>")
   .option("-e, --environment <environment>")
+  .option("-d --deploy-duration <deploy-duration>")
   .action(async (project, options) => {
     const input: PutMetricDataCommandInput = {
       MetricData: [
@@ -25,6 +26,27 @@ program
           Dimensions: [
             { Name: "Environment", Value: options.environment },
             { Name: "Project", Value: project },
+            { Name: "DeployDuration", Value: options.deployDuration },
+          ],
+          Unit: "Count",
+          Value: 1,
+        },
+        {
+          MetricName: `deployment.${options.status}`,
+          Dimensions: [{ Name: "Environment", Value: options.environment }],
+          Unit: "Count",
+          Value: 1,
+        },
+        {
+          MetricName: `deployment.${options.status}`,
+          Dimensions: [{ Name: "Project", Value: project }],
+          Unit: "Count",
+          Value: 1,
+        },
+        {
+          MetricName: `deployment.${options.status}`,
+          Dimensions: [
+            { Name: "DeployDuration", Value: options.deployDuration },
           ],
           Unit: "Count",
           Value: 1,
