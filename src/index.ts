@@ -15,39 +15,48 @@ program
 program
   .command("deployment")
   .argument("<project>")
-  .option("-s, --status <status>")
-  .option("-e, --environment <environment>")
-  .option("-d --deploy-duration <deploy-duration>")
+  .option("-s, --status <status>", "Deployment status")
+  .option("-e, --environment <environment>", "Deployment environment")
+  .option("-d --deploy-duration <deploy-duration>", "Deployment duration")
   .action(async (project, options) => {
-    const input: PutMetricDataCommandInput = {
-      MetricData: [
-        {
-          MetricName: `deployment.${options.status}`,
-          Dimensions: [
-            { Name: "Environment", Value: options.environment },
-            { Name: "Project", Value: project },
-            { Name: "DeployDuration", Value: options.deployDuration },
-          ],
-          Unit: "Count",
-          Value: 1,
-        },
-        {
-          MetricName: `deployment.${options.status}`,
-          Dimensions: [{ Name: "Environment", Value: options.environment }],
-          Unit: "Count",
-          Value: 1,
-        },
-        {
-          MetricName: `deployment.${options.status}`,
-          Dimensions: [{ Name: "Project", Value: project }],
-          Unit: "Count",
-          Value: 1,
-        },
-      ],
-      Namespace: "cuckoo",
-    };
-    await client.send(new PutMetricDataCommand(input));
-    console.log("Metric published to CloudWatch");
+    try {
+      // Validate deploy duration as a number
+      const deployDuration = parseInt(options.deployDuration);
+      if (isNaN(deployDuration)) {
+        throw new Error("Deploy duration must be a number");
+      }
+
+      const input: PutMetricDataCommandInput = {
+        MetricData: [
+          {
+            MetricName: "DeploymentStatus",
+            Dimensions: [
+              { Name: "Environment", Value: options.environment },
+              { Name: "Project", Value: project },
+              { Name: "Status", Value: options.status },
+            ],
+            Unit: "Count",
+            Value: 1,
+          },
+          {
+            MetricName: "DeploymentDuration",
+            Dimensions: [
+              { Name: "Environment", Value: options.environment },
+              { Name: "Project", Value: project },
+            ],
+            Value: deployDuration,
+            Unit: "Seconds",
+          },
+        ],
+
+        Namespace: "cuckoo",
+      };
+
+      await client.send(new PutMetricDataCommand(input));
+      console.log("Deployment metrics published to CloudWatch");
+    } catch (error) {
+      console.error("Error sending metrics to CloudWatch:", error);
+    }
   });
 
 program.parse();
