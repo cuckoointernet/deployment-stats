@@ -43,14 +43,6 @@ program
           Unit: "Count",
           Value: 1,
         },
-        {
-          MetricName: `deployment.${options.status}`,
-          Dimensions: [
-            { Name: "DeployDuration", Value: options.deployDuration },
-          ],
-          Unit: "Count",
-          Value: 1,
-        },
       ],
       Namespace: "cuckoo",
     };
