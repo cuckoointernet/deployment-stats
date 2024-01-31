@@ -38,7 +38,6 @@ program
             Dimensions: [
               { Name: "Environment", Value: options.environment },
               { Name: "Project", Value: project },
-              { Name: "Status", Value: options.status },
             ],
             Unit: "Count",
             Value: 1,
@@ -52,12 +51,6 @@ program
           {
             MetricName: `deployment.${options.status}`,
             Dimensions: [{ Name: "Project", Value: project }],
-            Unit: "Count",
-            Value: 1,
-          },
-          {
-            MetricName: `deployment.${options.status}`,
-            Dimensions: [{ Name: "Status", Value: options.status }],
             Unit: "Count",
             Value: 1,
           },
@@ -99,8 +92,10 @@ program
 
       await client.send(new PutMetricDataCommand(input));
       console.log("Deployment metrics published to CloudWatch");
+      process.exit(0);
     } catch (error) {
       console.error("Error sending metrics to CloudWatch:", error);
+      process.exit(1);
     }
   });
 
