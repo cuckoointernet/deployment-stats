@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/cuckoointernet/deployment-stats/compare/v1.0.1...v1.1.0) (2024-02-02)
+
+
+### Features
+
+* **duration:** Record deployment duration ([#19](https://github.com/cuckoointernet/deployment-stats/issues/19)) ([8bfc159](https://github.com/cuckoointernet/deployment-stats/commit/8bfc1599dd77aa87fbce99abf617467bcbb3d877))
+
 ## [1.0.1](https://github.com/cuckoointernet/deployment-stats/compare/v1.0.0...v1.0.1) (2024-01-15)
 
 
